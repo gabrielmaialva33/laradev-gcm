@@ -13,6 +13,7 @@ class EstadoTableSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
         Excel::import(new EstadosImport(), '/xlsx/seed_estado.xlsx', 'local');
