@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-use App\Models\Estado;
 use App\Models\Municipio;
 use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
