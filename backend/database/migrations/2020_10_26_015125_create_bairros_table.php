@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMunicipiosTable extends Migration
+class CreateBairrosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateMunicipiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('municipios', function (Blueprint $table) {
+        Schema::create('bairros', function (Blueprint $table) {
             // -> primary generate key uuid
             $table
                 ->uuid('id')
@@ -22,18 +22,18 @@ class CreateMunicipiosTable extends Migration
                 ->primary()
                 ->default(DB::raw('(uuid())'));
 
-            $table->string('codigo_ibge', 7)->nullable(true);
-            $table->string('municipio', 50);
-            $table->string('gentilico', 100);
-            $table->uuid('estado_id');
+            $table->string('nome', 255);
+            $table->string('codigo_bairro', 6)->nullable(true);
+            $table->text('observacao')->nullable(true);
+            $table->uuid('municipio_id');
 
             $table->timestamps();
 
-            // -> foreign estados
+            // -> foreign municipios
             $table
-                ->foreign('estado_id')
+                ->foreign('municipio_id')
                 ->references('id')
-                ->on('estados')
+                ->on('municipios')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
@@ -46,6 +46,6 @@ class CreateMunicipiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('municipios');
+        Schema::dropIfExists('bairros');
     }
 }
