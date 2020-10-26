@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
+/**
+ * @method static pluck(string $string)
+ */
 class Bairro extends Model
 {
     use HasFactory;
