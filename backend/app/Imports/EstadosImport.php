@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-
 use App\Models\Estado;
 use Maatwebsite\Excel\Concerns\ToModel;
 

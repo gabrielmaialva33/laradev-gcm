@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Endereco;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MunicipioTableSeeder::class);
         $this->call(BairroTableSeeder::class);
         $this->call(EnderecoTableSeeder::class);
+        $this->call(DadosPessoaisTableSeeder::class);
     }
 }
