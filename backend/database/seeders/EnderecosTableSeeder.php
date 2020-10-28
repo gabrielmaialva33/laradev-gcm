@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class EnderecoTableSeeder extends Seeder
+class EnderecosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

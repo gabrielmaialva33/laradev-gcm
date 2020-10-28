@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $column, string $value)
+ */
 class DadosPessoais extends Model
 {
     use HasFactory;
@@ -33,6 +36,16 @@ class DadosPessoais extends Model
         'validade_cnh',
         'observacao',
     ];
+
+    // -> get dados_pessoais id
+    public static function getDadosPessoaisId(string $column, string $value)
+    {
+        try {
+            return DadosPessoais::where($column, $value)->first()->id;
+        } catch (\Exception $err) {
+            return $err;
+        }
+    }
 
     // -> relation has one
     public function municipio()

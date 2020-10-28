@@ -10,7 +10,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Exception;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class BairroTableSeeder extends Seeder
+class BairrosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
