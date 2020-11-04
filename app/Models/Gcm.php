@@ -22,7 +22,6 @@ class Gcm extends Model
         'status',
     ];
 
-
     public static function getDadosPessoaisId(string $column, string $value)
     {
         try {

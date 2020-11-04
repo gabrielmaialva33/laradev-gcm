@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -20,10 +21,7 @@ class Handler extends ExceptionHandler
      *
      * @var array
      */
-    protected $dontFlash = [
-        'password',
-        'password_confirmation',
-    ];
+    protected $dontFlash = ['password', 'password_confirmation'];
 
     /**
      * Register the exception handling callbacks for the application.
@@ -33,5 +31,17 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
+    }
+
+    public function render($request, Throwable $e)
+    {
+        $json = [
+            'success' => false,
+            'error' => [
+                'code' => $e->getCode(),
+                'message' => $e->getMessage(),
+            ],
+        ];
+        return response()->json($json, 400);
     }
 }

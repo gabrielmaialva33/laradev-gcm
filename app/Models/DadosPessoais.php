@@ -7,6 +7,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 /**
  * @method static where(string $column, string $value)
+ * @method static create(array $array)
  */
 class DadosPessoais extends Model
 {
@@ -37,12 +38,19 @@ class DadosPessoais extends Model
         'observacao',
     ];
 
+    protected $casts = [
+        'telefone' => 'array',
+        'nome_filhos' => 'array',
+    ];
+
+    // -> get dados pessoais id
+
     public static function getDadosPessoaisId(string $column, string $value)
     {
         try {
             return DadosPessoais::where($column, $value)->first()->id;
-        } catch (\Exception $err) {
-            return $err;
+        } catch (\Exception $error) {
+            return null;
         }
     }
 
