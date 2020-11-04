@@ -7,6 +7,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 /**
  * @method static where(string $column, string $value)
+ * @method static create($data)
  */
 class DadosPessoais extends Model
 {

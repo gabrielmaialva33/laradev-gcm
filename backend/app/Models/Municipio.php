@@ -22,7 +22,11 @@ class Municipio extends Model
     // -> get municipio id
     public static function getMunicipioId(string $column, string $value)
     {
-        return Municipio::where($column, $value)->first()->id;
+        try {
+            return Municipio::where($column, $value)->first()->id;
+        } catch (\Exception $error) {
+            return response($error)->json('Municipio não encontrado', 404);
+        }
     }
 
     // -> relation has one

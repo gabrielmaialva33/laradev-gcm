@@ -4,7 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
+/**
+ * @method static where(string $column, string $value)
+ */
 class Gcm extends Model
 {
     use HasFactory;
@@ -20,6 +24,11 @@ class Gcm extends Model
     ];
 
     // -> relation has one
+    public static function getDadosPessoaisId(string $column, string $value)
+    {
+        return Gcm::where($column, $value)->first()->id;
+    }
+
     public function dadosPessoais()
     {
         return $this->hasOne(DadosPessoais::class);

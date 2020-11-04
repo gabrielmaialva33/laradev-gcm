@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EnderecosTableSeeder::class);
         $this->call(DadosPessoaisTableSeeder::class);
         $this->call(GcmsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 }
