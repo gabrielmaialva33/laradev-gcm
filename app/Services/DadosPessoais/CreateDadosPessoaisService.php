@@ -23,7 +23,7 @@ class CreateDadosPessoaisService
             $data['municipio_nascimento']
         );
         if (!$municipio_nascimento_id) {
-            throw new HttpException(404, 'Municipio não encontrado');
+            throw new AppError(404, 'Municipio não encontrado');
         }
 
         // -> save on database

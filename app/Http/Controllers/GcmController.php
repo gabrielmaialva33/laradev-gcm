@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DadosPessoaisRequest;
-use App\Models\DadosPessoais;
-use App\Models\Municipio;
-use App\Services\DadosPessoais\CreateDadosPessoaisService;
+use App\Http\Requests\GcmRequest;
 
-class DadosPessoaisController extends Controller
+class GcmController extends Controller
 {
-    // -> create
-    public function create(DadosPessoaisRequest $request)
+    public function create(GcmRequest $request)
     {
         $data = $request->only([
             // -> dados pessoais
@@ -36,12 +32,19 @@ class DadosPessoaisController extends Controller
             'tipo_cnh',
             'validade_cnh',
             'observacao',
-
+            /* // -> bairro
+             'nome_bairro',
+             'municipio',
+             // -> endereco
+             'logradouro',
+             'numero',
+             'complemento',
+             'cep',
+             // -> gcm
+             'nome_guerra',
+             'atribuicao',*/
         ]);
 
-        $create_dados_pessoais = new CreateDadosPessoaisService();
-        $dados_pessoais = $create_dados_pessoais->execute($data);
-
-        return response()->json($dados_pessoais);
+        dd($data);
     }
 }
