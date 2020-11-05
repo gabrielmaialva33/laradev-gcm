@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -33,14 +33,11 @@ class Handler extends ExceptionHandler
         //
     }
 
-    public function render($request, Throwable $e)
+    public function handleException(Exception $e)
     {
         $json = [
             'success' => false,
-            'error' => [
-                'code' => $e->getCode(),
-                'message' => $e->getMessage(),
-            ],
+            'error' => ['code' => $e->getCode(), 'message' => $e->getMessage()],
         ];
         return response()->json($json, 400);
     }

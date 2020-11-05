@@ -2,20 +2,21 @@
 
 namespace App\Services\DadosPessoais;
 
-use App\Exceptions\Handler;
+use App\Exceptions\AppError;
 use App\Models\DadosPessoais;
 use App\Models\Municipio;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class CreateDadosPessoaisService
 {
-    /**
-     * @var $data
-     */
-    private $data;
-
     public function execute($data)
     {
+        // -> check cpf exists
+        $cpf_exists = DadosPessoais::getDadosPessoaisId('cpf', $data['cpf']);
+        if ($cpf_exists) {
+            throw new AppError(409, 'CPF já cadastrado');
+        }
+
         // -> check municipio exists
         $municipio_nascimento_id = Municipio::getMunicipioId(
             'municipio',
@@ -49,6 +50,6 @@ class CreateDadosPessoaisService
             'tipo_cnh' => $data['tipo_cnh'],
             'validade_cnh' => $data['validade_cnh'],
             'observacao' => $data['observacao'],
-        ]);
+        ])->id;
     }
 }
