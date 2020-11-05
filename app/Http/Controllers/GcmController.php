@@ -32,19 +32,31 @@ class GcmController extends Controller
             'tipo_cnh',
             'validade_cnh',
             'observacao',
-            /* // -> bairro
-             'nome_bairro',
-             'municipio',
-             // -> endereco
-             'logradouro',
-             'numero',
-             'complemento',
-             'cep',
-             // -> gcm
-             'nome_guerra',
-             'atribuicao',*/
+            // -> bairro
+            'nome_bairro',
+            'codigo_bairro',
+            'bairro_observacao',
+            'municipio',
+            // -> endereco
+            'logradouro',
+            'numero',
+            'complemento',
+            'cep',
+            // -> gcm
+            'nome_guerra',
+            'atribuicao',
         ]);
 
+        //todo CreateDadosPessaoisService
+
+        //todo CreateBairroService
+
+        //todo CreateGcmService
+
+        //todo CreateGcmService
+
+        //todo CreateKeyCodeService
         dd($data);
+        return response()->json();
     }
 }

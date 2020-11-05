@@ -53,7 +53,9 @@ class GcmRequest extends FormRequest
             'observacao' => 'nullable',
             // -> bairro
             'nome_bairro' => 'required|max:255',
-            'municipio' => 'required', // - uuid
+            'codigo_bairro' => 'nullable|max:6',
+            'bairro_observacao' => 'nullable|string|max:255',
+            'municipio' => 'required|string', // - uuid
             // -> endereco
             'logradouro' => 'required|max:200',
             'numero' => 'required|numeric',

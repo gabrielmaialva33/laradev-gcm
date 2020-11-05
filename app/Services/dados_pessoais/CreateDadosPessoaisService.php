@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\DadosPessoais;
+namespace App\Services\dados_pessoais;
 
 use App\Exceptions\AppError;
 use App\Models\DadosPessoais;

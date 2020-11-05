@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DadosPessoaisRequest;
 use App\Models\DadosPessoais;
 use App\Models\Municipio;
-use App\Services\DadosPessoais\CreateDadosPessoaisService;
+use App\Services\dados_pessoais\CreateDadosPessoaisService;
 
 class DadosPessoaisController extends Controller
 {
