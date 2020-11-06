@@ -21,10 +21,21 @@ class Bairro extends Model
         'municipio_id',
     ];
 
+    // -> get bairro id
     public static function getBairroId(string $column, string $value)
     {
         try {
             return Bairro::where($column, $value)->first()->id;
+        } catch (\Exception $error) {
+            return null;
+        }
+    }
+
+    // -> get bairro by bairro code
+    public static function getBairroByCode(string $column, string $value)
+    {
+        try {
+            return Bairro::where($column, $value)->first();
         } catch (\Exception $error) {
             return null;
         }

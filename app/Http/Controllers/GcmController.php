@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GcmRequest;
+use App\Services\endereco\CreateEnderecoService;
 
 class GcmController extends Controller
 {
@@ -41,6 +42,7 @@ class GcmController extends Controller
             'logradouro',
             'numero',
             'complemento',
+            'cogigo_endereco',
             'cep',
             // -> gcm
             'nome_guerra',
@@ -56,6 +58,7 @@ class GcmController extends Controller
         //todo CreateGcmService
 
         //todo CreateKeyCodeService
+
         dd($data);
         return response()->json();
     }

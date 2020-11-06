@@ -21,8 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('api')->group(function () {
-    // -> dados_pessoais
-    Route::prefix('dados_pessoais')->group(function () {
+    // -> gcms
+    Route::prefix('gcms')->group(function () {
         Route::post('/', [GcmController::class, 'create']);
     });
 });
