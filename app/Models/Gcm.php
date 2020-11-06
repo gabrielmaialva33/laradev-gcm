@@ -14,7 +14,6 @@ class Gcm extends Model
     use HasFactory;
 
     protected $fillable = [
-        'matricula_gcm',
         'nome_guerra',
         'dados_pessoais_id',
         'endereco_id',
@@ -22,6 +21,15 @@ class Gcm extends Model
         'historico',
         'status',
     ];
+
+    public static function getGcmId(string $column, string $value)
+    {
+        try {
+            return Gcm::where($column, $value)->first()->id;
+        } catch (\Exception $error) {
+            return null;
+        }
+    }
 
     public static function getDadosPessoaisId(string $column, string $value)
     {

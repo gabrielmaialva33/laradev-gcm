@@ -31,10 +31,12 @@ class CreateBairroService
         }
 
         // -> save on database
-        return Bairro::create([
+        $bairro_id = Bairro::create([
             'nome' => $nome,
             'observacao' => $observacao,
             'municipio_id' => $municipio_id,
         ])->id;
+
+        return $bairro_id;
     }
 }

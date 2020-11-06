@@ -7,6 +7,7 @@ use App\Services\bairro\CreateBairroService;
 use App\Services\dados_pessoais\CreateDadosPessoaisService;
 use App\Services\endereco\CreateEnderecoService;
 use App\Services\gcm\CreateGcmService;
+use App\Services\keycode\CreateKeycodeService;
 
 class GcmController extends Controller
 {
@@ -44,7 +45,7 @@ class GcmController extends Controller
             'logradouro',
             'numero',
             'complemento',
-            'cogigo_endereco',
+            'codigo_endereco',
             'cep',
             // -> gcm
             'nome_guerra',
@@ -67,7 +68,7 @@ class GcmController extends Controller
             $data['numero'],
             $data['complemento'],
             $data['cep'],
-            $data['cogigo_endereco']
+            $data['codigo_endereco']
         );
 
         // -> create dados pessoais gcm
@@ -83,6 +84,9 @@ class GcmController extends Controller
             $data['atribuicao']
         );
 
-        return response()->json($gcm_id);
+        $createKeycode = new CreateKeycodeService();
+        $keycode = $createKeycode->execute($gcm_id);
+
+        return response($keycode);
     }
 }

@@ -26,7 +26,9 @@ class CreateDadosPessoaisService
         }
 
         // -> save on database
-        return DadosPessoais::create([
+
+        /** @var string $dados_pessoais_id */
+        $dados_pessoais_id = DadosPessoais::create([
             'nome' => $data['nome'],
             'rg' => $data['rg'],
             'cpf' => $data['cpf'],
@@ -50,5 +52,7 @@ class CreateDadosPessoaisService
             'validade_cnh' => $data['validade_cnh'],
             'observacao' => $data['observacao'],
         ])->id;
+
+        return $dados_pessoais_id;
     }
 }

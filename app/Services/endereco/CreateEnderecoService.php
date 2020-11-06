@@ -36,12 +36,14 @@ class CreateEnderecoService
         }
 
         // -> save on database
-        return Bairro::create([
+        $endereco_id = Endereco::create([
             "logradouro" => $logradouro,
             "numero" => $numero,
             "complemento" => $complemento,
             "cep" => $cep,
             "bairro_id" => $bairro_id,
         ])->id;
+
+        return $endereco_id;
     }
 }

@@ -60,6 +60,7 @@ class GcmRequest extends FormRequest
             'logradouro' => 'required|max:200',
             'numero' => 'required|numeric',
             'complemento' => 'nullable|max:100',
+            'codigo_endereco' => 'nullable|max:6',
             'cep' => 'nullable',
             // -> gcm
             'nome_guerra' => 'required',

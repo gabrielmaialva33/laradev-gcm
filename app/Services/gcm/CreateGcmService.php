@@ -11,7 +11,7 @@ class CreateGcmService
 {
     public function execute(
         string $nome_guerra,
-        string $dados_pessaois_id,
+        string $dados_pessoais_id,
         string $endereco_id,
         string $atribuicao
     ): string
@@ -19,7 +19,7 @@ class CreateGcmService
         // -> check dados pessoais exists
         $dadosPessaoisExists = DadosPessoais::getDadosPessoaisId(
             'id',
-            $dados_pessaois_id
+            $dados_pessoais_id
         );
         if (!$dadosPessaoisExists) {
             throw new AppError(404, 'Dados Pessoais não encontrado');
@@ -32,11 +32,15 @@ class CreateGcmService
         }
 
         // -> save on database
-        return Gcm::create([
+
+        /** @var string $gcm_id */
+        $gcm_id = Gcm::create([
             "nome_guerra" => $nome_guerra,
-            "dados_pessaois_id" => $dados_pessaois_id,
+            "dados_pessoais_id" => $dados_pessoais_id,
             "endereco_id" => $endereco_id,
             "atribuicao" => $atribuicao,
         ])->id;
+
+        return $gcm_id;
     }
 }
