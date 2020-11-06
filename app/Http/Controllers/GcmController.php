@@ -11,6 +11,9 @@ use App\Services\keycode\CreateKeycodeService;
 
 class GcmController extends Controller
 {
+    // -> show
+
+    // -> create
     public function create(GcmRequest $request)
     {
         $data = $request->only([
@@ -89,4 +92,8 @@ class GcmController extends Controller
 
         return response($keycode);
     }
+
+    // -> update
+
+    // -> delete
 }
