@@ -5,11 +5,10 @@ namespace App\Services\dados_pessoais;
 use App\Exceptions\AppError;
 use App\Models\DadosPessoais;
 use App\Models\Municipio;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class CreateDadosPessoaisService
 {
-    public function execute($data)
+    public function execute($data): string
     {
         // -> check cpf exists
         $cpf_exists = DadosPessoais::getDadosPessoaisId('cpf', $data['cpf']);

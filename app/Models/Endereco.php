@@ -7,6 +7,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 
 /**
  * @method static where(string $column, string $value)
+ * @method static create(array $array)
  */
 class Endereco extends Model
 {
@@ -25,8 +26,8 @@ class Endereco extends Model
     {
         try {
             return Endereco::where($column, $value)->first()->id;
-        } catch (\Exception $err) {
-            return $err;
+        } catch (\Exception $error) {
+            return null;
         }
     }
 

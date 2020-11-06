@@ -42,7 +42,7 @@ class Bairro extends Model
     }
 
     // -> relation has one
-    public function estado()
+    public function municipio()
     {
         return $this->hasOne(Municipio::class);
     }

@@ -8,13 +8,13 @@ use App\Models\Endereco;
 
 class CreateEnderecoService
 {
-    function execute(
+    public function execute(
+        string $bairro_id,
         string $logradouro,
-        ?string $numero,
-        ?string $complemento,
-        ?string $cep,
-        ?string $codigo_endereco,
-        string $bairro_id
+        ?string $numero = null,
+        ?string $complemento = null,
+        ?string $cep = null,
+        ?string $codigo_endereco = null
     ): string
     {
         // -> check bairro_id
@@ -37,11 +37,11 @@ class CreateEnderecoService
 
         // -> save on database
         return Bairro::create([
-            'logradouro' => $logradouro,
-            'numero' => $numero,
-            'complemento' => $complemento,
-            'cep' => $cep,
-            'bairro_id' => $bairro_id,
-        ]);
+            "logradouro" => $logradouro,
+            "numero" => $numero,
+            "complemento" => $complemento,
+            "cep" => $cep,
+            "bairro_id" => $bairro_id,
+        ])->id;
     }
 }

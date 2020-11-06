@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GcmRequest;
+use App\Services\bairro\CreateBairroService;
+use App\Services\dados_pessoais\CreateDadosPessoaisService;
 use App\Services\endereco\CreateEnderecoService;
+use App\Services\gcm\CreateGcmService;
 
 class GcmController extends Controller
 {
@@ -36,7 +39,6 @@ class GcmController extends Controller
             // -> bairro
             'nome_bairro',
             'codigo_bairro',
-            'bairro_observacao',
             'municipio',
             // -> endereco
             'logradouro',
@@ -49,17 +51,38 @@ class GcmController extends Controller
             'atribuicao',
         ]);
 
-        //todo CreateDadosPessaoisService
+        // -> create bairro gcm
+        $createBairro = new CreateBairroService();
+        $bairro_id = $createBairro->execute(
+            $data['nome_bairro'],
+            $data['municipio'],
+            $data['codigo_bairro']
+        );
 
-        //todo CreateBairroService
+        // -> create endereco gcm
+        $createEndereco = new CreateEnderecoService();
+        $endereco_id = $createEndereco->execute(
+            $bairro_id,
+            $data['logradouro'],
+            $data['numero'],
+            $data['complemento'],
+            $data['cep'],
+            $data['cogigo_endereco']
+        );
 
-        //todo CreateGcmService
+        // -> create dados pessoais gcm
+        $createDadosPessoais = new CreateDadosPessoaisService();
+        $dados_pessoais_id = $createDadosPessoais->execute($data);
 
-        //todo CreateGcmService
+        // -> create gcm
+        $createGcm = new CreateGcmService();
+        $gcm_id = $createGcm->execute(
+            $data['nome_guerra'],
+            $dados_pessoais_id,
+            $endereco_id,
+            $data['atribuicao']
+        );
 
-        //todo CreateKeyCodeService
-
-        dd($data);
-        return response()->json();
+        return response()->json($gcm_id);
     }
 }
