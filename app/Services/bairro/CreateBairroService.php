@@ -21,6 +21,12 @@ class CreateBairroService
             throw new AppError(404, 'Municipio não encontrado');
         }
 
+        // -> check compatible codigo_bairro with municipio_id
+        if ($codigo_bairro) {
+            $bairro_id = Bairro::getBairroId('codigo_bairro', $codigo_bairro);
+
+        }
+
         // -> save on database
         return Bairro::create([
             'nome' => $nome,
