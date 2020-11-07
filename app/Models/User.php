@@ -38,7 +38,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $casts = [
-        'gcm_id' => 'uuid',
+        'id' => 'string',
+        'gcm_id' => 'string',
+        'endereco_id' => 'string',
     ];
 
     /**

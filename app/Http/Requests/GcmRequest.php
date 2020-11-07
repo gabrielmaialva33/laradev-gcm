@@ -17,7 +17,16 @@ class GcmRequest extends FormRequest
     public function authorize()
     {
         // -> check user exists
-        if (!($user = JWTAuth::parseToken()->authenticate())) {
+
+        if (
+        !($user = JWTAuth::parseToken()
+            ->authenticate()
+            ->toArray())
+        ) {
+            return false;
+        }
+        // -> check user regra
+        if (!($user['regra'] === "MASTER" || $user['regra'] === "ADMIN")) {
             return false;
         }
 
