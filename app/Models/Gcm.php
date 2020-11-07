@@ -22,6 +22,11 @@ class Gcm extends Model
         'status',
     ];
 
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+
+    // -> get gcm id
     public static function getGcmId(string $column, string $value)
     {
         try {
@@ -31,24 +36,15 @@ class Gcm extends Model
         }
     }
 
-    public static function getDadosPessoaisId(string $column, string $value)
-    {
-        try {
-            return Gcm::where($column, $value)->first()->id;
-        } catch (\Exception $error) {
-            return null;
-        }
-    }
-
     // -> relation has one
-    public function dadosPessoais()
+    public function dados_pessoais()
     {
-        return $this->hasOne(DadosPessoais::class);
+        return $this->belongsTo(DadosPessoais::class, 'dados_pessoais_id');
     }
 
     // -> relation has one
     public function endereco()
     {
-        return $this->hasOne(Endereco::class);
+        return $this->belongsTo(Endereco::class, 'endereco_id');
     }
 }

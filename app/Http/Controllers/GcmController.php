@@ -2,29 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GcmRequest;
+use App\Exceptions\AppError;
+use App\Http\Requests\CreateGcmRequest;
+use App\Http\Resources\GcmResource;
+use App\Models\Gcm;
 use App\Services\bairro\CreateBairroService;
 use App\Services\dados_pessoais\CreateDadosPessoaisService;
 use App\Services\endereco\CreateEnderecoService;
 use App\Services\gcm\CreateGcmService;
 use App\Services\keycode\CreateKeycodeService;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class GcmController extends Controller
 {
     // -> index
     public function index()
     {
-
     }
 
     // -> show
-    public function show()
+    public function show(Request $request, $id)
     {
+        // -> check id is uuid
+        if (!Str::isUuid($id)) {
+            throw new AppError(400, 'Parâmetro invalido');
+        }
 
+        $gcm = Gcm::with(['dados_pessoais', 'endereco'])->find($id);
+
+        return new GcmResource($gcm);
     }
 
     // -> create
-    public function create(GcmRequest $request)
+    public function create(CreateGcmRequest $request)
     {
         $data = $request->only([
             // -> dados pessoais
@@ -106,7 +117,6 @@ class GcmController extends Controller
     // -> update
     public function update()
     {
-
     }
 
     // -> delete

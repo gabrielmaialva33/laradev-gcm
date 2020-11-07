@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-class GcmRequest extends FormRequest
+class CreateGcmRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
