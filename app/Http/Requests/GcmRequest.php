@@ -25,7 +25,7 @@ class GcmRequest extends FormRequest
         ) {
             return false;
         }
-        // -> check user regra
+        // -> check user auth
         if (!($user['regra'] === "MASTER" || $user['regra'] === "ADMIN")) {
             return false;
         }
