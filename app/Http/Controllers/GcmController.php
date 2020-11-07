@@ -11,7 +11,17 @@ use App\Services\keycode\CreateKeycodeService;
 
 class GcmController extends Controller
 {
+    // -> index
+    public function index()
+    {
+
+    }
+
     // -> show
+    public function show()
+    {
+
+    }
 
     // -> create
     public function create(GcmRequest $request)
@@ -94,6 +104,13 @@ class GcmController extends Controller
     }
 
     // -> update
+    public function update()
+    {
+
+    }
 
     // -> delete
+    public function delete()
+    {
+    }
 }

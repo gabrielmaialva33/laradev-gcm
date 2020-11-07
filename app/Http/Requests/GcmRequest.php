@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 class GcmRequest extends FormRequest
 {
     /**
@@ -13,6 +16,11 @@ class GcmRequest extends FormRequest
      */
     public function authorize()
     {
+        // -> check user exists
+        if (!($user = JWTAuth::parseToken()->authenticate())) {
+            return false;
+        }
+
         return true;
     }
 
