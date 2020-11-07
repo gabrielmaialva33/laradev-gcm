@@ -26,6 +26,13 @@ class Gcm extends Model
         'status' => 'boolean',
     ];
 
+    protected $hidden = [
+        'dados_pessoais_id',
+        'endereco_id',
+        'created_at',
+        'updated_at',
+    ];
+
     // -> get gcm id
     public static function getGcmId(string $column, string $value)
     {

@@ -13,6 +13,7 @@ use App\Services\gcm\CreateGcmService;
 use App\Services\keycode\CreateKeycodeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class GcmController extends Controller
 {
@@ -29,8 +30,12 @@ class GcmController extends Controller
             throw new AppError(400, 'Parâmetro invalido');
         }
 
-        $gcm = Gcm::with(['dados_pessoais', 'endereco'])->find($id);
-
+        try {
+            $gcm = Gcm::with(['dados_pessoais', 'endereco'])->find($id);
+        } catch (HttpException $e) {
+            return response()->json(['Erro no servidor'], $e->getStatusCode());
+        }
+        // return response()->json($gcm);
         return new GcmResource($gcm);
     }
 
