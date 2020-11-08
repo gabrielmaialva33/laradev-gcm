@@ -23,7 +23,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('api')->group(function () {
     // -> gcms
     Route::prefix('gcms')->group(function () {
-        Route::get('/{id}', [GcmController::class, 'show'])->middleware('auth:api');
+        Route::get('/', [GcmController::class, 'index'])->middleware(
+            'auth:api'
+        );
+        Route::get('/{id}', [GcmController::class, 'show'])->middleware(
+            'auth:api'
+        );
         Route::post('/', [GcmController::class, 'create'])->middleware(
             'auth:api'
         );

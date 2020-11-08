@@ -20,10 +20,25 @@ class GcmController extends Controller
     // -> index
     public function index()
     {
+        try {
+            $gcms = Gcm::with([
+                'dados_pessoais',
+                'endereco',
+                'endereco.bairro',
+                'endereco.bairro.municipio',
+                'endereco.bairro.municipio.estado',
+                'dados_pessoais.municipio_nascimento',
+                'dados_pessoais.municipio_nascimento.estado',
+            ])->get();
+        } catch (HttpException $e) {
+            return response()->json(['Erro no servidor'], $e->getStatusCode());
+        }
+
+        return new GcmResource($gcms);
     }
 
     // -> show
-    public function show(Request $request, $id)
+    public function show($id)
     {
         // -> check id is uuid
         if (!Str::isUuid($id)) {
@@ -43,7 +58,7 @@ class GcmController extends Controller
         } catch (HttpException $e) {
             return response()->json(['Erro no servidor'], $e->getStatusCode());
         }
-        // return response()->json($gcm);
+
         return new GcmResource($gcm);
     }
 
