@@ -8,6 +8,7 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
 /**
  * @method static where(string $column, string $value)
  * @method static create(array $array)
+ * @method static find($id)
  */
 class Gcm extends Model
 {

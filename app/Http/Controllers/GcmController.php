@@ -148,7 +148,21 @@ class GcmController extends Controller
     }
 
     // -> delete
-    public function delete()
+    public function delete($id)
     {
+        // -> check id is uuid
+        if (!Str::isUuid($id)) {
+            throw new AppError(400, 'Parâmetro invalido');
+        }
+
+        try {
+            $gcm_id = Gcm::find($id)->id;
+        } catch (HttpException $e) {
+            return response()->json(['Erro no servidor'], $e->getStatusCode());
+        }
+
+        Gcm::destroy($gcm_id);
+
+        return response()->json(['GCM deletado com sucesso'], 204);
     }
 }
