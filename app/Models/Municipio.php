@@ -19,6 +19,8 @@ class Municipio extends Model
         'estado_id',
     ];
 
+    protected $hidden = ['estado_id', 'created_at', 'updated_at'];
+
     // -> get municipio id
     public static function getMunicipioId(string $column, string $value)
     {
@@ -32,6 +34,6 @@ class Municipio extends Model
     // -> relation has one
     public function estado()
     {
-        return $this->hasOne(Estado::class);
+        return $this->belongsTo(Estado::class, 'estado_id');
     }
 }

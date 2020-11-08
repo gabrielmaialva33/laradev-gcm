@@ -2,8 +2,6 @@
 
 namespace App\Http\Resources;
 
-use App\Models\DadosPessoais;
-use App\Models\Gcm;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 

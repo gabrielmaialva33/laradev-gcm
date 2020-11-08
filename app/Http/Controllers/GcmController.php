@@ -31,7 +31,15 @@ class GcmController extends Controller
         }
 
         try {
-            $gcm = Gcm::with(['dados_pessoais', 'endereco'])->find($id);
+            $gcm = Gcm::with([
+                'dados_pessoais',
+                'endereco',
+                'endereco.bairro',
+                'endereco.bairro.municipio',
+                'endereco.bairro.municipio.estado',
+                'dados_pessoais.municipio_nascimento',
+                'dados_pessoais.municipio_nascimento.estado',
+            ])->find($id);
         } catch (HttpException $e) {
             return response()->json(['Erro no servidor'], $e->getStatusCode());
         }

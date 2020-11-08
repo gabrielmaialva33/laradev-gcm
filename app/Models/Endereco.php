@@ -22,6 +22,8 @@ class Endereco extends Model
         'bairro_id',
     ];
 
+    protected $hidden = ['bairro_id', 'created_at', 'updated_at'];
+
     public static function getEnderecoId(string $column, string $value)
     {
         try {
@@ -34,6 +36,6 @@ class Endereco extends Model
     // -> relation has many
     public function bairro()
     {
-        return $this->hasMany(Bairro::class);
+        return $this->belongsTo(Bairro::class, 'bairro_id');
     }
 }

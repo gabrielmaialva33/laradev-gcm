@@ -48,6 +48,8 @@ class DadosPessoais extends Model
         'nome_filhos' => 'array',
     ];
 
+    protected $hidden = ['municipio_nascimento_id', 'created_at', 'updated_at'];
+
     // -> get dados pessoais id
 
     public static function getDadosPessoaisId(string $column, string $value)
@@ -60,8 +62,8 @@ class DadosPessoais extends Model
     }
 
     // -> relation has one
-    public function municipio()
+    public function municipio_nascimento()
     {
-        return $this->hasOne(Municipio::class);
+        return $this->belongsTo(Municipio::class, 'municipio_nascimento_id');
     }
 }

@@ -14,6 +14,8 @@ class Estado extends Model
 
     protected $fillable = ["codigo_ibge", "uf", "sigla", "gentilico"];
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public static function getEstadoId(string $column, string $value)
     {
         return Estado::where($column, $value)->first()->id;

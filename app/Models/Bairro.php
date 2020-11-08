@@ -26,6 +26,8 @@ class Bairro extends Model
         'municipio_id',
     ];
 
+    protected $hidden = ['municipio_id', 'created_at', 'updated_at'];
+
     // -> get bairro id
     public static function getBairroId(string $column, string $value)
     {
@@ -49,6 +51,6 @@ class Bairro extends Model
     // -> relation has one
     public function municipio()
     {
-        return $this->hasOne(Municipio::class);
+        return $this->belongsTo(Municipio::class, 'municipio_id');
     }
 }
