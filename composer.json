@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "goldspecdigital/laravel-eloquent-uuid": "^8.0",
@@ -18,8 +19,7 @@
         "lucascudo/laravel-pt-br-localization": "^1.1",
         "maatwebsite/excel": "^3.1",
         "phpoffice/phpspreadsheet": "^1.15",
-        "tymon/jwt-auth": "^1.0",
-        "ext-json": "*"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

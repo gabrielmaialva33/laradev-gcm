@@ -2,37 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\AppError;
 use App\Http\Requests\CreateGcmRequest;
 use App\Http\Resources\GcmResource;
-use App\Models\Gcm;
 use App\Services\bairro\CreateBairroService;
 use App\Services\dados_pessoais\CreateDadosPessoaisService;
 use App\Services\endereco\CreateEnderecoService;
 use App\Services\gcm\CreateGcmService;
+use App\Services\gcm\DestroyGcmService;
+use App\Services\gcm\IndexGcmService;
+use App\Services\gcm\ShowGcmService;
 use App\Services\keycode\CreateKeycodeService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class GcmController extends Controller
 {
     // -> index
     public function index()
     {
-        try {
-            $gcms = Gcm::with([
-                'dados_pessoais',
-                'endereco',
-                'endereco.bairro',
-                'endereco.bairro.municipio',
-                'endereco.bairro.municipio.estado',
-                'dados_pessoais.municipio_nascimento',
-                'dados_pessoais.municipio_nascimento.estado',
-            ])->get();
-        } catch (HttpException $e) {
-            return response()->json(['Erro no servidor'], $e->getStatusCode());
-        }
+        $indexGcms = new IndexGcmService();
+        $gcms = $indexGcms->execute();
 
         return new GcmResource($gcms);
     }
@@ -40,24 +27,8 @@ class GcmController extends Controller
     // -> show
     public function show($id)
     {
-        // -> check id is uuid
-        if (!Str::isUuid($id)) {
-            throw new AppError(400, 'Parâmetro invalido');
-        }
-
-        try {
-            $gcm = Gcm::with([
-                'dados_pessoais',
-                'endereco',
-                'endereco.bairro',
-                'endereco.bairro.municipio',
-                'endereco.bairro.municipio.estado',
-                'dados_pessoais.municipio_nascimento',
-                'dados_pessoais.municipio_nascimento.estado',
-            ])->find($id);
-        } catch (HttpException $e) {
-            return response()->json(['Erro no servidor'], $e->getStatusCode());
-        }
+        $showGcm = new ShowGcmService();
+        $gcm = $showGcm->execute($id);
 
         return new GcmResource($gcm);
     }
@@ -150,19 +121,9 @@ class GcmController extends Controller
     // -> delete
     public function delete($id)
     {
-        // -> check id is uuid
-        if (!Str::isUuid($id)) {
-            throw new AppError(400, 'Parâmetro invalido');
-        }
+        $destroyGcm = new DestroyGcmService();
+        $destroyGcm->execute($id);
 
-        try {
-            $gcm_id = Gcm::find($id)->id;
-        } catch (HttpException $e) {
-            return response()->json(['Erro no servidor'], $e->getStatusCode());
-        }
-
-        Gcm::destroy($gcm_id);
-
-        return response()->json(['GCM deletado com sucesso'], 204);
+        return response()->json($destroyGcm, 204);
     }
 }

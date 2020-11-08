@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // -> Seed user GONÇALVES
-        $gcm_id = Gcm::getDadosPessoaisId('matricula_gcm', '1');
+        $gcm_id = Gcm::getGcmId('matricula_gcm', '1');
 
         DB::table('users')->insert([
             'nome_usuario' => 'gonsalves',

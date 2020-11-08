@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Http\Resources\GcmResource;
+use App\Models\Gcm;
+use App\Observers\GcmObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

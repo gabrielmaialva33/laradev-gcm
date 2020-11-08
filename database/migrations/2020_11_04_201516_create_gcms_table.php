@@ -56,6 +56,7 @@ class CreateGcmsTable extends Migration
                 ->on('enderecos')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+
         });
 
         // - create matricula_gcm

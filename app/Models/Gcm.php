@@ -12,8 +12,6 @@ use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
  */
 class Gcm extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'nome_guerra',
         'dados_pessoais_id',
@@ -23,10 +21,11 @@ class Gcm extends Model
         'status',
     ];
 
+    use HasFactory;
+
     protected $casts = [
         'status' => 'boolean',
     ];
-
     protected $hidden = [
         'dados_pessoais_id',
         'endereco_id',
