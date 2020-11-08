@@ -116,6 +116,7 @@ class GcmController extends Controller
     // -> update
     public function update()
     {
+        //todo
     }
 
     // -> delete
