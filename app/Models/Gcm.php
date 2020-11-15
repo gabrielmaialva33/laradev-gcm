@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * @method static where(string $column, string $value)
@@ -33,13 +34,32 @@ class Gcm extends Model
         'updated_at',
     ];
 
-    // -> get gcm id
+    // -> return gcm id
     public static function getGcmId(string $column, string $value)
     {
         try {
             return Gcm::where($column, $value)->first()->id;
         } catch (\Exception $error) {
             return null;
+        }
+    }
+
+    // -> return all data to gcm
+
+    public static function getDataGcm(string $id)
+    {
+        try {
+            return Gcm::with([
+                'dados_pessoais',
+                'endereco',
+                'endereco.bairro',
+                'endereco.bairro.municipio',
+                'endereco.bairro.municipio.estado',
+                'dados_pessoais.municipio_nascimento',
+                'dados_pessoais.municipio_nascimento.estado',
+            ])->find($id);
+        } catch (HttpException $e) {
+            return response()->json(['Erro no servidor'], $e->getStatusCode());
         }
     }
 

@@ -32,6 +32,9 @@ Route::namespace('api')->group(function () {
         Route::post('/', [GcmController::class, 'create'])->middleware(
             'auth:api'
         );
+        Route::put('/{id}', [GcmController::class, 'update'])->middleware(
+            'auth:api'
+        );
         Route::delete('/{id}', [GcmController::class, 'delete'])->middleware(
             'auth:api'
         );

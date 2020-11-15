@@ -1,15 +1,13 @@
 <?php
 
-
 namespace App\Services\gcm;
-
 
 use App\Exceptions\AppError;
 use App\Models\Gcm;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class ShowGcmService
+class UpdateGcmService
 {
     public function execute(string $id)
     {
@@ -18,12 +16,13 @@ class ShowGcmService
             throw new AppError(400, 'Parâmetro invalido');
         }
 
+        // -> get all ids
         try {
             $gcm = Gcm::getDataGcm($id);
+
+            return $gcm;
         } catch (HttpException $e) {
             return response()->json(['Erro no servidor'], $e->getStatusCode());
         }
-
-        return $gcm;
     }
 }

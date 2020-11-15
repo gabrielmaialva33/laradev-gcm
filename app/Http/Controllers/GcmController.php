@@ -11,6 +11,7 @@ use App\Services\gcm\CreateGcmService;
 use App\Services\gcm\DestroyGcmService;
 use App\Services\gcm\IndexGcmService;
 use App\Services\gcm\ShowGcmService;
+use App\Services\gcm\UpdateGcmService;
 use App\Services\keycode\CreateKeycodeService;
 
 class GcmController extends Controller
@@ -114,9 +115,12 @@ class GcmController extends Controller
     }
 
     // -> update
-    public function update()
+    public function update($id)
     {
-        //todo
+        $updateGcm = new UpdateGcmService();
+        $updateGcm->execute($id);
+
+        return $updateGcm;
     }
 
     // -> delete
