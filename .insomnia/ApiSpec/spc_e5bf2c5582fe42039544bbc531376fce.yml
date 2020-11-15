@@ -1,0 +1,20 @@
+_id: spc_e5bf2c5582fe42039544bbc531376fce
+type: ApiSpec
+parentId: wrk_ca5aaed6639d4d9892b8fdbcc8c1d804
+modified: 1605419244296
+created: 1603892131760
+fileName: LaradevGCM
+contents: |
+  swagger: "2.0"
+  info:
+    description: "This is a system for GCM"
+    version: "1.0.0"
+    title: "GMSYS"
+    contact:
+      email: "gabrielmaialva33@gmail.com"
+    license:
+      name: "MIT"
+  schemes:
+  - "https"
+  - "http"
+contentType: yaml
