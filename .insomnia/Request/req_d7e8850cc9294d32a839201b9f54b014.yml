@@ -1,0 +1,30 @@
+_id: req_d7e8850cc9294d32a839201b9f54b014
+type: Request
+parentId: fld_2de9f6313bed4e4a9740afed506457f6
+modified: 1605417135238
+created: 1603892184437
+url: "{{ base_url }}/login"
+name: Login
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"nome_usuario": "gonsalves",
+    	"password": "admin"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_4579059a29b0424e8846c99446112de4
+authentication: {}
+metaSortKey: -1603892184437
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

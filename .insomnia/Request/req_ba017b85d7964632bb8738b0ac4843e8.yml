@@ -1,0 +1,72 @@
+_id: req_ba017b85d7964632bb8738b0ac4843e8
+type: Request
+parentId: fld_550577685d0947b9becd0d1a13eb49e0
+modified: 1605418582662
+created: 1604437630086
+url: "{{ base_url }}/gcms"
+name: Create
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"nome": "Gabriel",
+    	"rg": "586109274SP",
+    	"cpf": "38738734870",
+    	"telefone": [
+    		"15996601743",
+    		"15997204738"
+    	],
+    	"nome_mae": "Inêz Maia Silva Moreira",
+    	"nome_pai": "Denis Maricato",
+    	"data_nascimento": "1999-02-23",
+    	"municipio_nascimento": "ASSIS",
+    	"sexo": "MASCULINO",
+    	"cutis": "BRANCO",
+    	"tipo_sanguineo": "O+",
+    	"estado_civil": "CASADO",
+    	"profissao": "GCM",
+    	"escolaridade": "SUPERIOR-INCOMPLETO",
+    	"nome_conjuge": "Maia",
+    	"nome_filhos": [
+    		"Rafael Maia Silva",
+    		"Ana Maia"
+    	],
+    	"titulo_eleitor": "10185650272",
+    	"zona_eleitoral": "1524744",
+    	"cnh": "02734170045",
+    	"tipo_cnh": "C",
+    	"validade_cnh": "2020-12-25",
+    	"observacao": "Esse é um teste.",
+    	"nome_bairro": "JARDIM DIVA",
+    	"codigo_bairro": "",
+    	"municipio": "ITARARÉ",
+    	"logradouro": "RUA JOÃO FERREIRA",
+    	"numero": "52",
+    	"complemento": "PERTO DO POSTO",
+    	"codigo_endereco": "",
+    	"cep": "18315000",
+    	"nome_guerra": "Maia",
+    	"atribuicao": "ADMINISTRATIVO"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_6d5a9bb0e1f4460295e7fbdbf076a4ae
+  - name: Accept
+    value: application/json
+    description: ""
+    id: pair_4b2a0d33d16e4fb48cedd18ad5ff44ff
+authentication:
+  type: bearer
+  token: "{% request 'cookie', 'token', 0 %}"
+metaSortKey: -1604437618286
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

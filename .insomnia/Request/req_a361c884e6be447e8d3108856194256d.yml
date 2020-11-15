@@ -1,0 +1,27 @@
+_id: req_a361c884e6be447e8d3108856194256d
+type: Request
+parentId: fld_550577685d0947b9becd0d1a13eb49e0
+modified: 1605418552265
+created: 1604813473060
+url: "{{ base_url }}/gcms"
+name: Index
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - name: Accept
+    value: application/json
+    description: ""
+    id: pair_a67fbf29f4ad42abba31552f1089f96f
+authentication:
+  type: bearer
+  token: "{% request 'cookie', 'token', 0 %}"
+metaSortKey: -1604813473060
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

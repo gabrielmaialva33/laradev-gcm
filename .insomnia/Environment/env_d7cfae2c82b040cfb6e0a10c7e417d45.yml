@@ -1,0 +1,16 @@
+_id: env_d7cfae2c82b040cfb6e0a10c7e417d45
+type: Environment
+parentId: env_61cc3fb75b6cc0624280fec07e0ee8dc41191159
+modified: 1605417597982
+created: 1605417182924
+name: master
+data:
+  base_url: http://127.0.0.1:8000/api
+  access_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYwNTQxNzU4OSwiZXhwIjoxNjA1NDIxMTg5LCJuYmYiOjE2MDU0MTc1ODksImp0aSI6Ikd4YnlZeUwyN2pCUGJQTXEiLCJzdWIiOiI3ZDJjMGY5ZS0yNmZhLTExZWItOTI0ZC0wMjQyYWMxMTAwMDIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.gO9jqL14FQVPSc8tQVa13N6mghsGmBS7ZHU30kWArn0
+dataPropertyOrder:
+  "&":
+    - base_url
+    - access_token
+color: "#7f6fbe"
+isPrivate: false
+metaSortKey: 1605417182924

@@ -1,0 +1,27 @@
+_id: req_1bdfdd5c759e46fabd8e1e76d6fcdea9
+type: Request
+parentId: fld_550577685d0947b9becd0d1a13eb49e0
+modified: 1605418579356
+created: 1604816255788
+url: "{{ base_url }}/gcms/6b0428f2-9a23-4ad1-8ee1-ea45eef61b55"
+name: Delete
+description: ""
+method: DELETE
+body: {}
+parameters: []
+headers:
+  - name: Accept
+    value: application/json
+    description: ""
+    id: pair_feaa52b4fbf34d6390e3719456ca1b08
+authentication:
+  type: bearer
+  token: "{% request 'cookie', 'token', 0 %}"
+metaSortKey: -1604816255788
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
